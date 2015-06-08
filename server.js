@@ -22,34 +22,6 @@ var Adjective = function() {
 };
 var adjective = new Adjective();
 
-var Verb = function() {
-  this.sleeping = true;
-  this.skiing = true;
-  this.flopped = true;
-  this.waiting = true;
-  this.plotting = true;
-  this.burping = true;
-  this.sneezing = true;
-  this.flying = true;
-  this.snoozing = true;
-  this.dancing = true;
-};
-var verb = new Verb();
-
-var Noun = function() {
-  this.ninjas = true;
-  this.cowboys = true;
-  this.bears = true;
-  this.beats = true;
-  this.alligators = true;
-  this.hamsters = true;
-  this.otters = true;
-  this.helicopters = true;
-  this.unicorns = true;
-  this.rhymes = true;
-};
-var noun = new Noun();
-
 function getRandomWord (object) {
   var propArray = Object.keys(object);
   var randomProp = propArray[Math.floor(Math.random() * propArray.length)];
@@ -58,14 +30,6 @@ function getRandomWord (object) {
 
 app.get('/adjective', function(req, res) {
   res.json(getRandomWord(adjective));
-});
-
-app.get('/verb', function(req, res) {
-  res.json(getRandomWord(verb));
-});
-
-app.get('/noun', function(req, res) {
-  res.json(getRandomWord(noun));
 });
 
 app.get('/', function(req, res) {

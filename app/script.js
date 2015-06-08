@@ -8,16 +8,6 @@ $(function() {
       $("#adjective").text(adjective);
     });
 
-    $.get('verb', function(response) {
-      var verb = response.word;
-      $("#verb").text(verb);
-    });
-
-    $.get('noun', function(response) {
-      var noun = response.word;
-      $("#noun").text(noun);
-    });
-
   });
 
 });
