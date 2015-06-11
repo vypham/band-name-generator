@@ -1,10 +1,14 @@
 'use strict';
 
 var express = require('express');
+var bodyParser = require('body-parser');
+
 var app = express();
 var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/app/'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 var Adjective = function() {
   this.sleepy = true;
@@ -55,6 +59,12 @@ function getRandomWord (object) {
   var randomProp = propArray[Math.floor(Math.random() * propArray.length)];
   return {word: randomProp};
 }
+
+app.post('/adjective', function(req, res) {
+  console.log(req.body.word);
+  adjective[req.body.word] = true;
+  res.json({message: "Ya did it!", confirm: req.body.word})
+});
 
 app.get('/adjective', function(req, res) {
   res.json(getRandomWord(adjective));
